@@ -2,7 +2,17 @@
 
 source variables.yml
 
-
+while [ 1 ]; do
+read -p "Are you want deploy cffork8s? (y/n) " RESP
+if [ "$RESP" = "y" ] || [ "$RESP" = "Y" ] || [ "$RESP" = "yes" ] || [ "$RESP" = "YES" ]; then
+  break
+elif [ "$RESP" = "n" ] || [ "$RESP" = "N" ] || [ "$RESP" = "no" ] || [ "$RESP" = "NO" ]; then
+  echo "deploy canceled"
+  return
+else
+  echo "plz input y or n"
+fi
+done
 
 if [[ ${use_metallb} = "true" ]]; then
 	mkdir manifest -p
