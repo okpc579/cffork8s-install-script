@@ -7,7 +7,7 @@ cf login -a api.$(cat manifest/cf-values.yml | grep "system_domain" | cut -d ' '
 -p $(cat manifest/cf-values.yml | grep "cf_admin_password" | cut -d ' ' -f 2) \
 -o system \
 --skip-ssl-validation << EOF
-
+  
 
 EOF
 
