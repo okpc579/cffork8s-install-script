@@ -12,6 +12,7 @@ if [[ ${use_external_blobstore} = "true" ]]; then
     else
       # Error Check : external_db_kind
       echo "plz check variables.yml : external_db_kind"
+      return
     fi
   elif [[ ${use_external_db} = "false" ]]; then
     # External_Blobstore
@@ -19,6 +20,7 @@ if [[ ${use_external_blobstore} = "true" ]]; then
   else
     # Error Check : use_external_db
     echo "plz check variables.yml : use_external_db"
+    return
   fi
 
 elif [[ ${use_external_blobstore} = "false" ]]; then
@@ -32,6 +34,7 @@ elif [[ ${use_external_blobstore} = "false" ]]; then
     else
       # Error Check : external_db_kind
       echo "plz check variables.yml : external_db_kind"
+      return
     fi
   elif [[ ${use_external_db} = "false" ]]; then
     #normal
@@ -39,7 +42,9 @@ elif [[ ${use_external_blobstore} = "false" ]]; then
   else
     # Error Check : use_external_db
     echo "plz check variables.yml : use_external_db"
+    return
   fi
 else
   echo "plz check variables.yml : use_external_blobstore"
+  return
 fi

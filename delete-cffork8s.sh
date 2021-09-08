@@ -32,5 +32,5 @@ elif [[ ${use_metallb} = "false" ]]; then
 
 else
 	echo "plz check variables.yml : use_metallb"
-	exit 1
+	return
 fi

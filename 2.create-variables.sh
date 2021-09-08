@@ -36,6 +36,7 @@ app_registry:
 EOF
 else
         echo "plz check variables.yml : app_registry_kind"
+        return
 fi
 
 
@@ -85,5 +86,6 @@ if [[ ${use_external_db} = "true" ]]; then
     rm manifest/external-db-values-mysql-temp.yml
   else
     echo "plz check variables.yml : external_db_kind"
+    return
   fi
 fi

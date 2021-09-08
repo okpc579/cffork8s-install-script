@@ -33,7 +33,7 @@ elif [[ ${use_metallb} = "false" ]]; then
 fi
 else
 	echo "plz check variables.yml : use_metallb"
-	exit 1
+	return
 fi
 
 kapp deploy -a paasta -f manifest/cf-for-k8s-rendered.yml -y
