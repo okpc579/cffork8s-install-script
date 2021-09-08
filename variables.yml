@@ -5,7 +5,7 @@ public_ip=3.3.3.3                                           # LoadbalancerIP (Pu
 storageclass_name=cinder-csi                                # Storage Class Name ($ kubectl get sc)
 
 ## APP_REGISTRY VARIABLE
-app_registry_kind=private                                   # Registry Kind (e.g. dockerhub or private)
+app_registry_kind=dockerhub                                   # Registry Kind (e.g. dockerhub or private)
 app_registry_repository=admin                               # Repository Name 
 app_registry_id=admin                                       # Registry ID
 app_registry_password=adminpw                               # Registry Password
