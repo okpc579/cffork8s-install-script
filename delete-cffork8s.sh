@@ -30,7 +30,7 @@ if [[ ${use_metallb} = "true" ]]; then
 	    echo "MetalLB is not installed -> END" 
 	fi
 elif [[ ${use_metallb} = "false" ]]; then
-
+	sleep 1
 else
 	echo "plz check variables.yml : use_metallb"
 	return
