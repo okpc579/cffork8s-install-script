@@ -25,7 +25,7 @@ elif [[ ${use_metallb} = "false" ]]; then
 	METALLBCHECK=$(kubectl get ns metallb-system)
 	if [[ $METALLBCHECK =~ "metallb-system" ]]; then
 		echo "MetalLB is installed -> delete MetalLB" 
-	    kubectl delete -f manifest/metallb_config.yml
+	    	kubectl delete -f manifest/metallb_config.yml
 		kubectl delete -f https://raw.githubusercontent.com/google/metallb/v0.10.2/manifests/metallb.yaml
 		kubectl delete -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/manifests/namespace.yaml
 		echo "Continue cffork8s install" 
