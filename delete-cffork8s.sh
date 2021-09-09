@@ -23,7 +23,8 @@ if [[ ${use_metallb} = "true" ]]; then
 	METALLBCHECK=$(kubectl get ns metallb-system)
 	if [[ $METALLBCHECK =~ "metallb-system" ]]; then
 		kubectl delete -f manifest/metallb_config.yml
-		kubectl delete -f https://raw.githubusercontent.com/google/metallb/v0.8.3/manifests/metallb.yaml 
+		kubectl delete -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/manifests/metallb.yaml
+		kubectl delete -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/manifests/namespace.yaml
 		echo "delete MetalLB"
 	else
 	    echo "MetalLB is not installed -> END" 
