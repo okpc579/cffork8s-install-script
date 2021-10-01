@@ -4,19 +4,38 @@ source variables.yml
 mkdir manifest -p
 
 ../hack/generate-values.sh -d ${system_domain} > ./manifest/cf-values.yml
+
 cat << EOF >> ./manifest/cf-values.yml
 use_first_party_jwt_tokens: true
 enable_automount_service_account_token: true
+EOF
+
+
+## LoadBalancer Setting
+if [[ ${use_lb} = "true" ]]; then
+cat << EOF >> ./manifest/cf-values.yml
 load_balancer:
    enable: true
 EOF
 
-if [[ ${iaas} = "openstack" ]]; then
+elif [[ ${use_lb} = "false" ]]; then
+cat << EOF >> ./manifest/cf-values.yml
+load_balancer:
+   enable: false
+EOF
+else
+        echo "plz check variables.yml : use_lb"
+        return
+fi
+
+if [[ ${iaas} = "openstack" ]] && [[ ${use_lb} = "true" ]]; then
 cat << EOF >> ./manifest/cf-values.yml
    static_ip: ${public_ip}
 EOF
 fi
 
+
+## App Registry Setting
 if [[ ${app_registry_kind} = "dockerhub" ]]; then
 cat << EOF >> ./manifest/cf-values.yml
 app_registry:
@@ -39,8 +58,7 @@ else
         return
 fi
 
-
-
+## External Blobstore Setting
 if [[ ${use_external_blobstore} = "true" ]]; then
   cp support-files/external-blobstore-values.yml manifest/ -f
   sed -i "s/<external_blobstore_ip>/$external_blobstore_ip/" manifest/external-blobstore-values.yml
@@ -54,7 +72,7 @@ if [[ ${use_external_blobstore} = "true" ]]; then
 fi
 
 
-
+## External Database Setting
 if [[ ${use_external_db} = "true" ]]; then
   if [[ ${external_db_kind} = "postgres" ]]; then
     cp support-files/external-db-values-postgresql.yml manifest/ -f
