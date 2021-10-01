@@ -40,7 +40,3 @@ external_uaa_db_password=uaa_admin                          # UAA DB Password
 external_uaa_db_name=uaa                                    # UAA DB Name
 external_db_cert_path=support-files/db.ca                   # if DB use cert --> add the contents of the db.ca file
                                                             # if DB don't use cert --> db.ca is empty
-
-## MetalLB DB VARIABLE (Option)
-use_metallb=false                                           # (e.g. true or false)
-metallb_cidr=10.0.0.0/24                                    # MetalLB CIDR [k8s cluster CIDR] (e.g. 10.10.10.0/24)

@@ -11,7 +11,7 @@ load_balancer:
    enable: true
 EOF
 
-if [[ ${iaas} = "openstack" ]] || [[ ${use_metallb} = "true" ]]; then
+if [[ ${iaas} = "openstack" ]]; then
 cat << EOF >> ./manifest/cf-values.yml
    static_ip: ${public_ip}
 EOF
