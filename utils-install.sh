@@ -4,8 +4,8 @@ echo "------------------"
 echo "ytt & kapp install"
 echo "------------------"
 sudo su -c "wget -O- https://k14s.io/install.sh | bash"
-sudo chown ubuntu:ubuntu /usr/local/bin/ytt
-sudo chown ubuntu:ubuntu /usr/local/bin/kapp
+sudo chown $(id -u):$(id -g) /usr/local/bin/ytt
+sudo chown $(id -u):$(id -g) /usr/local/bin/kapp
 
 echo "------------------"
 echo "bosh cli install"
