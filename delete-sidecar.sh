@@ -2,5 +2,5 @@
 
 source variables.yml
 
-kapp delete -a paasta
+kapp delete -a sidecar
 
