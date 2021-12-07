@@ -3,9 +3,9 @@ source variables.yml
 
 mkdir manifest -p
 
-../hack/generate-values.sh -d ${system_domain} > ./manifest/cf-values.yml
+../hack/generate-values.sh -d ${system_domain} > ./manifest/sidecar-values.yml
 
-cat << EOF >> ./manifest/cf-values.yml
+cat << EOF >> ./manifest/sidecar-values.yml
 use_first_party_jwt_tokens: true
 enable_automount_service_account_token: true
 EOF
@@ -13,13 +13,13 @@ EOF
 
 ## LoadBalancer Setting
 if [[ ${use_lb} = "true" ]]; then
-cat << EOF >> ./manifest/cf-values.yml
+cat << EOF >> ./manifest/sidecar-values.yml
 load_balancer:
    enable: true
 EOF
 
 elif [[ ${use_lb} = "false" ]]; then
-cat << EOF >> ./manifest/cf-values.yml
+cat << EOF >> ./manifest/sidecar-values.yml
 load_balancer:
    enable: false
 EOF
@@ -29,7 +29,7 @@ else
 fi
 
 if [[ ${iaas} = "openstack" ]] && [[ ${use_lb} = "true" ]]; then
-cat << EOF >> ./manifest/cf-values.yml
+cat << EOF >> ./manifest/sidecar-values.yml
    static_ip: ${public_ip}
 EOF
 fi
@@ -37,7 +37,7 @@ fi
 
 ## App Registry Setting
 if [[ ${app_registry_kind} = "dockerhub" ]]; then
-cat << EOF >> ./manifest/cf-values.yml
+cat << EOF >> ./manifest/sidecar-values.yml
 app_registry:
   hostname: https://index.docker.io/v1/
   repository_prefix: "${app_registry_repository}"
@@ -46,7 +46,7 @@ app_registry:
 EOF
 
 elif [[ ${app_registry_kind} = "private" ]]; then
-cat << EOF >> ./manifest/cf-values.yml
+cat << EOF >> ./manifest/sidecar-values.yml
 app_registry:
   hostname: https://${app_registry_address}/v2/
   repository_prefix: "${app_registry_address}/${app_registry_repository}"
