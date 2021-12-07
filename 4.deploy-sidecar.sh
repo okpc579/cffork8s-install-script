@@ -2,4 +2,4 @@
 
 source variables.yml
 
-kapp deploy -a paasta -f manifest/cf-for-k8s-rendered.yml
+kapp deploy -a sidecar -f manifest/cf-for-k8s-rendered.yml
