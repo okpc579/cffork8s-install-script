@@ -2,9 +2,9 @@
 TEST_SPACE=temp-test-space
 TEST_APP_NAME=temp-test-app
 
-cf login -a api.$(cat manifest/cf-values.yml | grep "system_domain" | cut -d ' ' -f 2 | sed -e 's/\"//g') \
+cf login -a api.$(cat manifest/sidecar-values.yml | grep "system_domain" | cut -d ' ' -f 2 | sed -e 's/\"//g') \
 -u admin \
--p $(cat manifest/cf-values.yml | grep "cf_admin_password" | cut -d ' ' -f 2) \
+-p $(cat manifest/sidecar-values.yml | grep "cf_admin_password" | cut -d ' ' -f 2) \
 -o system \
 --skip-ssl-validation << EOF
   
