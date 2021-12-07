@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#POD_WEBHOOK_IMAGE_PATH="10.0.100.46.nip.io/cffork8s/pod-webhook-image"              # POD WEBHOOK IMAGE를 올린 경로(Docker Hub나 Harbor 등 Registry 주소)
-#SETUP_CA_CERTS_IMAGE_PATH="10.0.100.46.nip.io/cffork8s/setup-ca-certs-image"        # SETUP CA CERTS IMAGE를 올린 경로(Docker Hub나 Harbor 등 Registry 주소)
+#POD_WEBHOOK_IMAGE_PATH="10.0.100.46.nip.io/sidecar/pod-webhook-image"              # POD WEBHOOK IMAGE를 올린 경로(Docker Hub나 Harbor 등 Registry 주소)
+#SETUP_CA_CERTS_IMAGE_PATH="10.0.100.46.nip.io/sidecar/setup-ca-certs-image"        # SETUP CA CERTS IMAGE를 올린 경로(Docker Hub나 Harbor 등 Registry 주소)
 #CA_CERT_FILE_PATH="../private-registry.ca"                                             # Private Registry 배포 시 사용된 CA 파일
 
 
